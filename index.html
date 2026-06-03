@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To-Do List Manager</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+
+    <h1>📝 To-Do List Manager</h1>
+
+    <!-- Блок введення -->
+    <div class="input-block">
+      <input
+        type="text"
+        id="taskInput"
+        placeholder="Введіть нове завдання..."
+        maxlength="200"
+        autocomplete="off"
+      >
+      <button id="addBtn" onclick="addTask()">Додати</button>
+    </div>
+
+    <!-- Фільтри -->
+    <div class="filters">
+      <button class="filter-btn active" onclick="filterTasks('all')">Всі</button>
+      <button class="filter-btn" onclick="filterTasks('active')">Активні</button>
+      <button class="filter-btn" onclick="filterTasks('done')">Виконані</button>
+    </div>
+
+    <!-- Список завдань -->
+    <ul id="taskList"></ul>
+
+    <!-- Нижня панель -->
+    <div class="footer-bar">
+      <span id="counter">0 завдань залишилось</span>
+      <button class="btn-clear" onclick="clearCompleted()">Очистити виконані</button>
+    </div>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

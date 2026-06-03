@@ -1,0 +1,253 @@
+/* ── Reset ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ── Body ── */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #667eea 10%, #764ba2 70%);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px 16px 60px;
+}
+
+/* ── Контейнер ── */
+.container {
+  width: 100%;
+  max-width: 650px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+  padding: 36px 32px 28px;
+}
+
+/* ── Заголовок ── */
+h1 {
+  text-align: center;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 28px;
+  letter-spacing: -0.5px;
+}
+
+/* ── Блок введення ── */
+.input-block {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.input-block input[type="text"] {
+  flex: 1;
+  padding: 13px 16px;
+  border: 2px solid #dde1e7;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  color: #2c3e50;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.input-block input[type="text"]:focus {
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.15);
+}
+
+.input-block input[type="text"].error {
+  border-color: #e74c3c;
+  box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.15);
+}
+
+#addBtn {
+  padding: 13px 22px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s ease, transform 0.15s ease;
+  white-space: nowrap;
+}
+
+#addBtn:hover  { opacity: 0.9; transform: translateY(-1px); }
+#addBtn:active { transform: translateY(0); }
+
+/* ── Фільтри ── */
+.filters {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.filter-btn {
+  flex: 1;
+  padding: 8px 12px;
+  background: #f4f6f9;
+  color: #7f8c8d;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.filter-btn:hover {
+  background: #e8ebf0;
+  color: #2c3e50;
+}
+
+.filter-btn.active {
+  background: #fff;
+  border-color: #667eea;
+  color: #667eea;
+  font-weight: 600;
+}
+
+/* ── Список завдань ── */
+#taskList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-height: 60px;
+  margin-bottom: 18px;
+}
+
+/* Заглушка порожнього списку */
+#taskList li.empty {
+  text-align: center;
+  color: #b2bec3;
+  font-size: 0.9rem;
+  padding: 32px 0;
+  cursor: default;
+}
+
+/* Елемент завдання */
+#taskList li.task-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 14px;
+  background: #fafbfc;
+  border: 1px solid #eaecef;
+  border-radius: 10px;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+  animation: slideIn 0.2s ease;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+#taskList li.task-item:hover {
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.07);
+  border-color: #d5d8dc;
+}
+
+/* Чекбокс */
+#taskList li input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #667eea;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+/* Текст завдання */
+.task-text {
+  flex: 1;
+  font-size: 0.95rem;
+  color: #2c3e50;
+  word-break: break-word;
+  line-height: 1.4;
+}
+
+/* Дата */
+.task-date {
+  font-size: 0.75rem;
+  color: #b2bec3;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* Виконане завдання */
+#taskList li.done .task-text {
+  text-decoration: line-through;
+  color: #b2bec3;
+}
+
+#taskList li.done {
+  opacity: 0.7;
+}
+
+/* Кнопки дій */
+.btn-edit,
+.btn-delete {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px 7px;
+  border-radius: 6px;
+  font-size: 1rem;
+  line-height: 1;
+  transition: background-color 0.15s ease;
+  flex-shrink: 0;
+  opacity: 0;
+  transition: opacity 0.15s ease, background-color 0.15s ease;
+}
+
+#taskList li.task-item:hover .btn-edit,
+#taskList li.task-item:hover .btn-delete {
+  opacity: 1;
+}
+
+.btn-edit:hover   { background-color: #eafaf1; }
+.btn-delete:hover { background-color: #fdedec; }
+
+/* ── Нижня панель ── */
+.footer-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 14px;
+  border-top: 1px solid #eaecef;
+  gap: 12px;
+}
+
+#counter {
+  font-size: 0.85rem;
+  color: #7f8c8d;
+}
+
+.btn-clear {
+  background: none;
+  border: none;
+  color: #e74c3c;
+  font-size: 0.85rem;
+  cursor: pointer;
+  padding: 5px 8px;
+  border-radius: 6px;
+  transition: background-color 0.15s ease;
+}
+
+.btn-clear:hover { background-color: #fdedec; }
+
+/* ── Адаптивність ── */
+@media (max-width: 480px) {
+  .container { padding: 24px 18px 20px; }
+  h1 { font-size: 1.4rem; }
+  .input-block { flex-direction: column; }
+  #addBtn { width: 100%; }
+  .task-date { display: none; }
+  .btn-edit, .btn-delete { opacity: 1; }
+}
